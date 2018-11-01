@@ -8,13 +8,32 @@ let snibley = {
 
 function pet() {
   snibley.pets++
+  draw()
 }
 
 function reset() {
   snibley.pets = 0
+  draw()
 }
 
 function draw() {
-
-
-}       
+  let template = ''
+  if (snibley.pets <= snibley.tolerance) {
+    template = `
+  <img src="${snibley.images[0]}"/>
+      <h2> Name: ${ snibley.name}</h2>
+        <h2>Pets:${snibley.pets}</h2>
+        <h2>Mood: ${snibley.moods[0]}</h2>
+  `
+  }
+  else {
+    template = `
+  <img src="${snibley.images[1]}"/>
+      <h2> Name: ${ snibley.name}</h2>
+        <h2>Pets:${snibley.pets}</h2>
+        <h2>Mood: ${snibley.moods[1]}</h2>
+    `
+  }
+  document.getElementById('cat-stats').innerHTML = template
+}
+draw()
